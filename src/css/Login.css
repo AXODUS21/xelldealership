@@ -1,0 +1,33 @@
+.Login{
+    padding-top: 6vh;
+    height: 100vh;
+    background-image: linear-gradient(#0e1111,#232b2b);
+}
+.login-sign-container{
+    display: flex;
+    justify-content: center;
+}
+.login-sign{
+    font-family: 'Black Ops One', Arial;
+    color: white;
+    filter: drop-shadow(2px 2px 3px);
+}
+.login-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-layout{
+    background: rgba( 255, 255, 255, 0.05 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4.5px );
+    -webkit-backdrop-filter: blur( 4.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    height: 50px;
+    width: 225px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

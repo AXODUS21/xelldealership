@@ -1,0 +1,39 @@
+body{
+    padding-top: 20px;
+    background-color: black;
+}
+.home-container{
+    display: flex;
+    justify-content: center;
+}
+video{
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    object-fit:cover;
+    position: relative;
+}
+.home-text{
+    position: absolute;
+    font-size: 13vw;
+    font-family: 'Black Ops One', Arial;
+    background-image: linear-gradient(black,rgb(33, 33, 33),gray);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(3px 3px 4px black);
+}
+.home-detail-container{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 30vw;
+}
+.home-details{
+    position: absolute;
+    width: max-content;
+    font-size: 1vw;
+    color: rgb(174, 174, 174);
+}

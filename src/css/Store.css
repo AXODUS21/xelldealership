@@ -1,0 +1,145 @@
+.store-container{
+    padding-top: 6vh;
+    background-color: #0e1111;
+}
+.store-header{
+    display: flex;
+    justify-content: center;
+}
+.store-sign{
+    font-family: 'Black Ops One', Arial;
+    color: white;
+    filter: drop-shadow(2px 2px 3px);
+}
+.search-bar-container{
+    display: flex;
+    justify-content: center;
+}
+.search-bar{
+    width: 45%;
+    margin: 1rem 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 1.75rem;
+    border-radius: 3rem;
+    background: #1f2123;
+    -webkit-box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
+    box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
+}
+.search-bar input{
+    flex: 1;
+    border: none;
+    font-size: 1.5rem;
+    font-family: var(--font-raleway);
+    font-weight: 500;
+    padding-right: 1rem;
+    outline: none;
+    color: #a1a1a1;
+    background: #1f2123;
+}
+.car-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+    gap: 10%;
+    padding: 5% 10% 0% 10%;
+    background-color: inherit;
+    
+}
+.add-car{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 150px;
+    background-color: black;
+    margin-bottom: 10%;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+.added-car{
+    display: grid;
+    place-items: center;
+    padding: 3%;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    text-align: center;
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    color: rgb(56, 145, 255);
+}
+.car-image img{
+    height: 10vw;
+}
+.add-icon{
+    width: 100px;
+    height: 100px;
+    transform: rotate(0deg);
+    transition: 1.8s;
+}
+.add-icon:hover{
+    transform: rotate(360deg);
+    filter: drop-shadow(0px 0px 15px rgb(25, 155, 255));
+}
+.car-form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pop-up{
+    position: fixed;
+    height: 70%;
+    width: 40%;
+    top: 20%;
+    left: 30%;
+    z-index: 100;
+    background-color: white;
+    color: black;
+    border-radius: 20px;
+}
+.pop-up-header{
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+}
+.close-button{
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    font-family: Arial;
+    font-weight: 1000;
+    transition: 2s;
+    border: none;
+}
+.close-button:hover{
+    filter: drop-shadow(0px 0px 5px rgb(108, 27, 27));
+}
+.form-container{
+    display: flex;
+    justify-content: center;
+}
+.form-container h1 {
+    text-align: center;
+     font-family: 'Black Ops One', Arial;
+}
+.Form{
+    display: grid;
+    width: 90%;
+    gap: 2%;
+    padding: 0px 25px 0px 25px ;
+}
+.Form textarea,
+.Form input{
+    height: 40px;
+    width: 100%;
+    padding: 2%;
+}

@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Kanit:wght@400;600&family=Oswald:wght@400;600&display=swap');
+
+*{
+  padding: 0px;
+  margin: 0px;
+}
+
+header{
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(29, 29, 29);
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 4.2rem;
+  padding: 0px 20px 0px 20px;
+  z-index: 1;
+  box-shadow: -0.5em .70em 1.5em rgb(46, 46, 46);
+}
+.left-side{
+  transform: skew(0deg);
+  transition: 1s;
+  background-color: inherit;
+  height: 64px;
+}
+.left-side:hover{
+  transform:translateX(30px);
+}
+.logo{
+  height: 64px;
+  border-radius: 35px;
+  mix-blend-mode:difference;
+}
+.right-side{
+  display: grid;
+  grid-template-columns: 0.3fr 0.3fr 1fr ;
+  gap: 30px;
+}
+.right-side a{
+  text-decoration: none;
+  color: white;
+  border-bottom: 2px  solid;
+  transition: border-bottom-color 0.3s;
+  border-bottom-color: rgb(29, 29, 29) ;
+}
+.right-side a:hover{
+  border-bottom-color: white;
+}
+.user-info-container{
+  display: flex;
+  align-items: center;
+  color: white;
+  gap: 20px;
+}
+.user-photo{
+  width: 28px;
+  height: 28px;
+  border-radius: 14px;
+}
+.user-name{
+  margin: 0px;
+}
