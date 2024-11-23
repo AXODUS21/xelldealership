@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom'
 import { auth } from '../config/firebase';
 import { useAuthState } from "react-firebase-hooks/auth"
 import { signOut } from 'firebase/auth'
-import logo from "../addons/xDlogo.png"
 
 const Navbar = () => {
    const [user] = useAuthState(auth);
