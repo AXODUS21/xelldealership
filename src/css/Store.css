@@ -1,6 +1,8 @@
 .store-container{
     padding-top: 6vh;
-    background-color: #0e1111;
+    padding-bottom: 20svh;
+    height: fit-content;
+    background-color: rgb(58, 58, 58);
 }
 .store-header{
     display: flex;
@@ -15,39 +17,106 @@
     display: flex;
     justify-content: center;
 }
-.search-bar{
-    width: 45%;
-    margin: 1rem 0 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.5rem 1.75rem;
-    border-radius: 3rem;
-    background: #1f2123;
-    -webkit-box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
-    box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
-}
-.search-bar input{
-    flex: 1;
-    border: none;
-    font-size: 1.5rem;
-    font-family: var(--font-raleway);
-    font-weight: 500;
-    padding-right: 1rem;
-    outline: none;
-    color: #a1a1a1;
-    background: #1f2123;
-}
 .car-container{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     justify-content: space-evenly;
-    width: 100%;
-    height: 100%;
     gap: 10%;
     padding: 5% 10% 0% 10%;
-    background-color: inherit;
+    color: white;
+    background-color: inherit;   
+}
+.added-car{
+    display: flex;
+    gap: 10%;
+    padding: 3%;
+}
+.car-image{
+    display: flex;
+    align-items: center;
+}
+.car-image img{
+    width: 13svw;
+}
+.car-details{
+    width: 100%;
+    display: grid;
+    gap: 20px;
+}
+.NameNPrice p{
+    padding-bottom: 10px;
+    border-bottom: white solid 1px ;
+}
+/* From Uiverse.io by TISEPSE */ 
+.view-more-btn a {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid #fefefe;
+  text-transform: uppercase;
+  color: #fefefe;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.view-more-btn a::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% - 12px);
+  background-color: #212121;
+  transition: 0.3s ease-in-out;
+  transform: scaleY(1);
+}
+
+.view-more-btn a:hover::before {
+  transform: scaleY(0);
+}
+
+.view-more-btn a::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: -2px;
+  height: calc(100% + 4px);
+  width: calc(100% - 12px);
+  background-color: #212121;
+  transition: 0.3s ease-in-out;
+  transform: scaleX(1);
+  transition-delay: 0.5s;
+}
+
+.view-more-btn a:hover::after {
+  transform: scaleX(0);
+}
+
+.view-more-btn a span {
+  position: relative;
+  z-index: 3;
+}
+
+.view-more-btn {
+  background-color: none;
+  text-decoration: none;
+  background-color: #212121;
+  border: none;
+}
+.add-to-fav-button{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    border: none;
+    height: 40px;
+    width: 40px;
     
+}
+.add-to-fav-button img{
+    height: 20px;
+    width: 20px;
 }
 .add-car{
     display: flex;
@@ -63,22 +132,6 @@
     -webkit-backdrop-filter: blur( 4px );
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
-}
-.added-car{
-    display: grid;
-    place-items: center;
-    padding: 3%;
-    background: rgba( 255, 255, 255, 0.25 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 4px );
-    text-align: center;
-    -webkit-backdrop-filter: blur( 4px );
-    border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
-    color: rgb(56, 145, 255);
-}
-.car-image img{
-    height: 10vw;
 }
 .add-icon{
     width: 100px;
@@ -142,4 +195,10 @@
     height: 40px;
     width: 100%;
     padding: 2%;
+}
+
+@media screen and (max-width: 767px){
+    .car-container{
+        grid-template-columns: 1fr;
+    }
 }

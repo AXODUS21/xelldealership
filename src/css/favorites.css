@@ -1,0 +1,11 @@
+.favorites-container{
+    height: fit-content;
+    background-color: rgb(80, 77, 77);
+    color: white;
+    padding-top: 7svh;
+    padding-bottom: 10svh;
+    
+}
+.favorites-container h2{
+    text-align: center;
+}

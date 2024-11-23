@@ -8,7 +8,7 @@ const Home = () => {
    <body>
      <div className="home-container">
        <video src={video} autoPlay muted loop />
-       <div className="home-text">HOME</div>
+       <div className="home-text">XELLDEALERHIP</div>
        <div className='home-detail-container'>
          <p className="home-details">
            Nothing but quality. Get the best for the lowest

@@ -4,9 +4,16 @@ import { auth, db } from "../config/firebase";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import {useState, useEffect} from 'react'
 import CarPostForm from '../components/car-post-form';
-import {getDocs, collection} from 'firebase/firestore'
 import Post from '../components/post';
-
+import {
+  doc,
+  updateDoc,
+  arrayUnion,
+  query,
+  where,
+  getDocs,
+  collection
+} from "firebase/firestore";
 
 
 export interface Post {
@@ -34,11 +41,44 @@ const Store = () => {
     const data = await getDocs(carPostRef)
     setCarList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })) as Post[]);
   }
-
   
   useEffect(() => {
     getPosts()
   }, [])
+
+  const handleAddToFavorites = async (id: string) => {
+    try {
+      if (!user) {
+        console.log("No user is logged in.");
+        return;
+      }
+
+      // Query the user document by email
+      const usersRef = collection(db, "users");
+      const q = query(usersRef, where("email", "==", user.email));
+      const querySnapshot = await getDocs(q);
+
+      if (querySnapshot.empty) {
+        console.log("No user document found for email:", user.email);
+        return;
+      }
+
+      const userDoc = querySnapshot.docs[0]; // Get the user's document
+      const userDocRef = doc(db, "users", userDoc.id); // Reference to the user document
+
+      // Create a reference to the car document
+      const carRef = doc(db, "car", id);
+
+      // Add the car reference to the user's favorites
+      await updateDoc(userDocRef, {
+        favorites: arrayUnion(carRef),
+      });
+
+      console.log(`Car with ID: ${id} added to favorites.`);
+    } catch (err) {
+      console.error("Error adding car to favorites:", err);
+    }
+  };
 
   
   return (
@@ -55,17 +95,14 @@ const Store = () => {
         </div>
       )}
 
-        
       <div className="car-container">
         {user?.uid === adminUid && (
           <PostCar setFormVisibility={setFormVisibility} />
         )}
-        
-        
-          {carList?.map((post) => (
-            <Post post={post} />
-          ))}
-
+                
+        {carList?.map((post) => (
+          <Post post={post} handleAddToFavorites={handleAddToFavorites}/>
+        ))}
       </div>
     </div>
   );

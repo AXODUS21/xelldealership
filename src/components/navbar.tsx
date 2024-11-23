@@ -15,15 +15,15 @@ const Navbar = () => {
 
   return (
     <header>
-      <div className="left-side">
-        <img
-          className="logo"
-          src={logo}
-        />
-      </div>
       <div className="right-side">
         <Link to="/">HOME</Link>
         <Link to="/store">STORE</Link>
+        {user ? (
+          <Link to="/favorites">
+            FAVORITES
+          </Link>
+        ) : null}
+        
         {user ? (
           <div onClick={signUserOut} className="user-info-container">
             <img className='user-photo' src={user?.photoURL || ""} />

@@ -4,41 +4,27 @@
   padding: 0px;
   margin: 0px;
 }
-
 header{
   position: fixed;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content:end;
   background-color: rgb(29, 29, 29);
   left: 0;
   right: 0;
   top: 0;
   height: 4.2rem;
   padding: 0px 20px 0px 20px;
-  z-index: 1;
+  z-index: 999;
   box-shadow: -0.5em .70em 1.5em rgb(46, 46, 46);
-}
-.left-side{
-  transform: skew(0deg);
-  transition: 1s;
-  background-color: inherit;
-  height: 64px;
-}
-.left-side:hover{
-  transform:translateX(30px);
-}
-.logo{
-  height: 64px;
-  border-radius: 35px;
-  mix-blend-mode:difference;
 }
 .right-side{
   display: grid;
-  grid-template-columns: 0.3fr 0.3fr 1fr ;
+  grid-template-columns: 0.3fr 0.3fr 0.3fr 1fr ;
   gap: 30px;
 }
 .right-side a{
+  cursor: pointer;
   text-decoration: none;
   color: white;
   border-bottom: 2px  solid;
@@ -52,13 +38,22 @@ header{
   display: flex;
   align-items: center;
   color: white;
-  gap: 20px;
+  gap: 10px;
 }
 .user-photo{
   width: 28px;
+  cursor: pointer;
   height: 28px;
   border-radius: 14px;
 }
 .user-name{
+  cursor: pointer;
   margin: 0px;
+
+}
+
+@media screen and (max-width: 767px){
+    .user-name{
+       font-size: 2.5svw;
+    }
 }
