@@ -2,9 +2,7 @@ import { auth } from "../config/firebase";
 import "../css/favorites.css";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useEffect, useState } from "react";
-import { useFavorites } from "../config/globals"; 
 import { db } from "../config/firebase";
-import { useContext } from "react";
 import {
   collection,
   query,
