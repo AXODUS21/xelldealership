@@ -1,5 +1,4 @@
 import '../css/Home.css'
-import "bootstrap/dist/css/bootstrap.min.css";
 import video from '../addons/carVid.mp4'
 
 
