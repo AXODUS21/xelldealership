@@ -38,14 +38,18 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({
   const [userFavorites, setUserFavorites] = useState<Favorite[]>([]);
   const [user] = useAuthState(auth);
 
+  const getUserQuerySnapshot = async () => {
+    if (!user?.email) throw new Error("User email is missing");
+    const usersRef = collection(db, "users");
+    const q = query(usersRef, where("email", "==", user.email));
+    return await getDocs(q);
+  };
+
   const refreshFavorites = async () => {
     if (!user) return;
 
     try {
-      const usersRef = collection(db, "users");
-      const q = query(usersRef, where("email", "==", user.email));
-      const querySnapshot = await getDocs(q);
-
+      const querySnapshot = await getUserQuerySnapshot();
       if (!querySnapshot.empty) {
         const userData = querySnapshot.docs[0].data() as User;
         const favoriteRefs = userData.favorites || [];
@@ -63,7 +67,7 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({
           favoriteDocs.filter((doc) => doc !== null) as Favorite[]
         );
       } else {
-        setUserFavorites([]); // Clear favorites if user has none
+        setUserFavorites([]);
       }
     } catch (error) {
       console.error("Error refreshing favorites:", error);
@@ -74,16 +78,13 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({
     if (!user) return;
 
     try {
-      const usersRef = collection(db, "users");
-      const q = query(usersRef, where("email", "==", user.email));
-      const querySnapshot = await getDocs(q);
-
+      const querySnapshot = await getUserQuerySnapshot();
       if (!querySnapshot.empty) {
         const userDoc = querySnapshot.docs[0].ref;
         await updateDoc(userDoc, {
           favorites: arrayUnion(ref),
         });
-        refreshFavorites(); // Ensure state updates immediately
+        refreshFavorites();
       }
     } catch (error) {
       console.error("Error adding to favorites:", error);
@@ -94,16 +95,13 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({
     if (!user) return;
 
     try {
-      const usersRef = collection(db, "users");
-      const q = query(usersRef, where("email", "==", user.email));
-      const querySnapshot = await getDocs(q);
-
+      const querySnapshot = await getUserQuerySnapshot();
       if (!querySnapshot.empty) {
         const userDoc = querySnapshot.docs[0].ref;
         await updateDoc(userDoc, {
           favorites: arrayRemove(ref),
         });
-        refreshFavorites(); // Ensure state updates immediately
+        refreshFavorites();
       }
     } catch (error) {
       console.error("Error removing from favorites:", error);
@@ -111,34 +109,38 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   useEffect(() => {
-    if (user) {
-      // Live updates for userFavorites
-      const usersRef = collection(db, "users");
-      const q = query(usersRef, where("email", "==", user.email));
-      const unsubscribe = onSnapshot(q, async (querySnapshot) => {
-        if (!querySnapshot.empty) {
-          const userData = querySnapshot.docs[0].data() as User;
-          const favoriteRefs = userData.favorites || [];
+    if (!user) return;
 
-          const favoriteDocs = await Promise.all(
-            favoriteRefs.map(async (ref) => {
+    const usersRef = collection(db, "users");
+    const q = query(usersRef, where("email", "==", user.email));
+    const unsubscribe = onSnapshot(q, async (querySnapshot) => {
+      if (!querySnapshot.empty) {
+        const userData = querySnapshot.docs[0].data() as User;
+        const favoriteRefs = userData.favorites || [];
+
+        const favoriteDocs = await Promise.all(
+          favoriteRefs.map(async (ref) => {
+            try {
               const docSnap = await getDoc(ref);
               return docSnap.exists()
                 ? { id: docSnap.id, ...docSnap.data() }
                 : null;
-            })
-          );
+            } catch (error) {
+              console.error("Error fetching favorite document:", error);
+              return null;
+            }
+          })
+        );
 
-          setUserFavorites(
-            favoriteDocs.filter((doc) => doc !== null) as Favorite[]
-          );
-        } else {
-          setUserFavorites([]); // Clear favorites if user has none
-        }
-      });
+        setUserFavorites(
+          favoriteDocs.filter((doc) => doc !== null) as Favorite[]
+        );
+      } else {
+        setUserFavorites([]);
+      }
+    });
 
-      return () => unsubscribe(); // Cleanup on unmount
-    }
+    return () => unsubscribe();
   }, [user]);
 
   return (
