@@ -9,14 +9,14 @@ header{
   display: flex;
   align-items: center;
   justify-content:end;
-  background-color: rgb(29, 29, 29);
+  background-color: rgb(73, 133, 255);
+  border-bottom: 1px solid;
   left: 0;
   right: 0;
   top: 0;
   height: 4.2rem;
   padding: 0px 20px 0px 20px;
   z-index: 999;
-  box-shadow: -0.5em .70em 1.5em rgb(46, 46, 46);
 }
 .right-side{
   display: grid;
@@ -26,18 +26,18 @@ header{
 .right-side a{
   cursor: pointer;
   text-decoration: none;
-  color: white;
+  color: black;
   border-bottom: 2px  solid;
   transition: border-bottom-color 0.3s;
-  border-bottom-color: rgb(29, 29, 29) ;
+  border-bottom-color: rgb(73, 133, 255) ;
 }
 .right-side a:hover{
-  border-bottom-color: white;
+  border-bottom-color: black;
 }
 .user-info-container{
   display: flex;
   align-items: center;
-  color: white;
+  color: black;
   gap: 10px;
 }
 .user-photo{

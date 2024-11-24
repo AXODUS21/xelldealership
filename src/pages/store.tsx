@@ -49,7 +49,7 @@ const Store = () => {
   const handleAddToFavorites = async (id: string) => {
     try {
       if (!user) {
-        console.log("No user is logged in.");
+        alert("No user is logged in.");
         return;
       }
 
